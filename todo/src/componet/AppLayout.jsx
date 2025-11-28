@@ -1,0 +1,33 @@
+import { createBrowserRouter } from "react-router-dom";
+import { Home } from "./Home";
+import { About } from "./About";
+import { Register } from "./Register";
+import ToDoDetail from "./ToDoDetail";
+import { Layout } from "./Layout";
+import { Login } from "./Login";
+import { AllToDo } from "./AllTodo";
+import PrivateRouter from "./PrivateRouter";
+import { Otp } from "./Otp";
+import { Dashboard } from "./Dashboard";
+
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <PrivateRouter>
+        <Layout />
+      </PrivateRouter>
+    ),
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "about", element: <About /> },
+      { path: "alltodo", element: <AllToDo /> },
+      { path: "tododetail/:id", element: <ToDoDetail /> },
+      { path: "dashboard", element: <Dashboard /> },
+    ],
+  },
+
+  { path: "/login", element: <Login /> },
+  { path: "/register", element: <Register /> },
+  { path: "/otp", element: <Otp /> },
+]);
